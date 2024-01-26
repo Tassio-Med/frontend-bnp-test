@@ -20,9 +20,18 @@ type ModalProps = {
 */
 
 export const Modal: React.FC<ModalProps> = ({ children, title, isOpen, ...props }) => {
+
 	function handleCloseClick(e: React.MouseEvent) {
-		props.onClose?.('click', e.target);
-	}
+    const target = e.target as HTMLElement;
+
+    if (
+      target.closest('[data-modal-container]') === null ||
+      target.closest('[data-modal-close]') !== null ||
+      target.closest('[data-modal-cancel]') !== null
+    ) {
+      props.onClose?.('click', target);
+    }
+  }
 
 	function handleConfirmClick(e: React.MouseEvent) {
 		props.onConfirm?.();
