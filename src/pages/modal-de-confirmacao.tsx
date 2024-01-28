@@ -58,8 +58,6 @@ export default function Home() {
 				</button>
 			</main>
 
-			{/* Renderizar modal de confirmação */}
-
 			<ModalConfirmacao
 				isOpen={modalIsOpen}
 				title="Confirmação"

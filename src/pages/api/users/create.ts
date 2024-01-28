@@ -9,7 +9,8 @@
  * - O body vai seguir a interface IUserCreate, removendo o id
  * - Você deve corrigir a interface IUserCreate em src/types/user.d.ts
  */
-// create.ts
+
+
 import { NextApiRequest, NextApiResponse } from 'next';
 import { IUserCreate } from '@/types/user.d';
 import { useUser } from '@/pages/context/user-context';
@@ -19,7 +20,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (req.method === 'POST') {
     try {
-      // Assinatura de índice para lidar com propriedades dinâmicas em req.body
       const userData: IUserCreate & { [key: string]: any } = req.body;
 
       if (!userData?.name || !userData?.email) {

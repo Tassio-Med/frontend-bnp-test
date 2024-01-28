@@ -7,7 +7,6 @@
  * - A página deve ser atualizada a cada 1 minuto
  */
 
-
 import { GetStaticProps } from 'next';
 
 import styles from '@/styles/lista.module.css';
