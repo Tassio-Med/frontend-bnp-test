@@ -10,18 +10,37 @@
  * - Você deve corrigir a interface IUserCreate em src/types/user.d.ts
  */
 
-import { NextApiRequest, NextApiResponse } from 'next/types';
-
+import { NextApiRequest, NextApiResponse } from 'next';
 import { IUser, IUserCreate } from '@/types/user.d';
 
-const users: IUser[] = [];
+let users: IUser[] = [
+  { id: 1, name: 'José Henrique', email: 'jose@email.com' },
+  { id: 2, name: 'Bruna Santana', email: 'bruna@email.com' },
+];
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
-	if(req.method !== 'POST') {
-		return res.status(405).json({ error: 'Method Not Allowed' });
-	}
+  if (req.method === 'POST') {
+    try {
+      const userData: IUserCreate = req.body;
 
-	const userData: IUserCreate = req.body;
+      if (!userData.name || !userData.email) {
+        return res.status(400).json({ error: 'Nome e email são obrigatórios' });
+      }
 
-	return res.status(201).json(undefined);
+      const newUser: IUser = {
+        id: users.length + 1,
+        name: userData.name,
+        email: userData.email,
+      };
+
+      users.push(newUser);
+
+      return res.status(201).json(newUser);
+    } catch (error) {
+      console.error('Erro ao processar a requisição:', error);
+      return res.status(500).json({ error: 'Erro interno do servidor' });
+    }
+  }
+
+  return res.status(405).json({ error: 'Method Not Allowed' });
 };
