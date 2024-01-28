@@ -9,7 +9,6 @@
  */
 
 import { useState } from 'react';
-import Head from 'next/head';
 
 import styles from '@/styles/modal.module.css';
 import { ModalConfirmacao } from '@/components/ModalConfirmacao';

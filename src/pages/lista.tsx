@@ -6,7 +6,6 @@
  * - Renderizar a lista de usuários
  */
 
-import { useEffect } from 'react';
 import styles from '@/styles/lista.module.css';
 import { useUser } from './context/user-context';
 

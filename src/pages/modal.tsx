@@ -5,7 +5,6 @@
  */
 
 import { useState } from 'react';
-
 import styles from '@/styles/modal.module.css';
 import { Modal } from '@/components/Modal';
 

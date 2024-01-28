@@ -13,11 +13,7 @@ import styles from '@/styles/context-api.module.css';
 import { IToastMessage } from '@/types/toast-message';
 import { ToastMessage } from '@/components/ToastMessage';
 import { useUser } from './context/user-context';
-
-interface ContextApiProps {
-  onSuccess: (message: string) => void;
-  onError: (message: string) => void;
-}
+import { ContextApiProps } from '@/types/context-api-props';
 
 export default function ContextApi({ onSuccess, onError }: ContextApiProps) {
   const { users } = useUser(); 

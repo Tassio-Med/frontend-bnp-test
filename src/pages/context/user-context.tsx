@@ -1,10 +1,6 @@
 import { createContext, ReactNode, useContext, useState, useEffect } from 'react';
 import { IUser } from '@/types/user';
-
-interface UserContextProps {
-  users: IUser[];
-  addUser: (user: IUser) => void;
-}
+import { UserContextProps } from '@/types/user-context';
 
 const UserContext = createContext<UserContextProps | undefined>(undefined);
 

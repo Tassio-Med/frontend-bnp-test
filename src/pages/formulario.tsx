@@ -12,11 +12,7 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import styles from '@/styles/formulario.module.css';
 import { useUser } from './context/user-context';
-
-interface FormData {
-  name: string;
-  email: string;
-}
+import { FormData } from '@/types/form-props';
 
 export default function Form() {
   const { addUser } = useUser();
@@ -25,28 +21,6 @@ export default function Form() {
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
-
-  /* const onSubmit: SubmitHandler<FormData> = async (data) => {
-    try {
-      const response = await fetch('/api/users/create', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (!response.ok) {
-        throw new Error('Erro ao cadastrar usuário');
-      }
-
-      const newUser = await response.json();
-      addUser(newUser);
-    } catch (error) {
-      console.error(error);
-    }
-  };
- */
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     try {

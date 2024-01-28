@@ -8,7 +8,6 @@
  */
 
 import { GetStaticProps } from 'next';
-
 import styles from '@/styles/lista.module.css';
 import { ICity } from '@/types/city.d';
 import { ListaProps } from '@/types/city-list-props';

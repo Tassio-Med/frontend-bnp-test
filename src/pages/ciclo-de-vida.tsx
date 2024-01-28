@@ -19,10 +19,8 @@ import { GetServerSideProps } from 'next/types';
 import styles from '@/styles/ciclo-de-vida.module.css';
 import { Counter } from '@/components/Counter';
 import { useState } from 'react';
+import { CicloDeVidaProps } from '@/types/life-cycle-props';
 
-type CicloDeVidaProps = {
-  initialCount: number;
-};
 
 export default function CicloDeVida({ initialCount }: CicloDeVidaProps) {
   const [showCounter, setShowCounter] = useState(false);
