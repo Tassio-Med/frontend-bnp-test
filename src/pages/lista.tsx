@@ -1,4 +1,4 @@
-/**
+/* 
  * Lista
  *
  * - Primeiramente vá até /src/pages/api/users/index.ts e implemente a API
@@ -6,41 +6,63 @@
  * - Renderizar a lista de usuários
  */
 
-import { useEffect, useState } from 'react';
-
+/* import { useContext, useEffect } from 'react';
 import styles from '@/styles/lista.module.css';
-import { IUser } from '@/types/user';
+import { UserContext } from './context-api';
 
 export default function Lista() {
-	const [users, setUsers] = useState<Array<IUser>>([]);
+  const { users, getUsersList } = useContext(UserContext);
+  console.log('Usuários iniciais:', users);
+  useEffect(() => {
+    if (!users || users.length === 0) {
+      console.log('Buscando usuários...');
+      getUsersList();
+    }
+  }, [getUsersList, users]);
 
-	async function getUsersList() {
-		try {
-			const response = await fetch('/api/users');
-			const data = await response.json();
+  console.log('Usuários após busca:', users);
 
-			if (!response.ok) throw new Error('Erro ao obter os dados');
+  if (!users || users.length === 0) {
+    return <div>Ainda não há usuários cadastrados.</div>;
+  }
 
-			setUsers(data);
-		} catch (error) {
-			console.error(error);
-		}
-	}
+  return (
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <h2>Lista de usuários</h2>
 
-	useEffect(() => {
-		getUsersList();
-	}, []);
+        <div data-list-container>
+          {users.map((user, index) => (
+            <div key={`${user.id}_${index}`} data-list-item>
+              ID {user.id} - {user.name} ({user.email})
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+} */
 
-	return (
-		<div className={styles.container}>
-			<div className={styles.content}>
-				<h2>Lista de usuários</h2>
+// lista.tsx
+import { useEffect } from 'react';
+import styles from '@/styles/lista.module.css';
+import { useUser } from './context/user-context';
 
-				<div data-list-container>
-					{/* Exemplo */}
-					<div data-list-item>ID 323 - Usuário 323 (user-323@mail.com)</div>
-				</div>
-			</div>
-		</div>
-	);
+export default function Lista() {
+  const { users } = useUser();
+
+  return (
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <h2>Lista de usuários</h2>
+
+        <div data-list-container>
+          {users.map((user) => (
+            <div key={user.id} data-list-item>{`ID ${user.id} - ${user.name} (${user.email})`}</div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 }
+
