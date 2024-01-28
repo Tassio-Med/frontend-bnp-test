@@ -26,7 +26,7 @@ export default function Form() {
     formState: { errors },
   } = useForm<FormData>();
 
-  const onSubmit: SubmitHandler<FormData> = async (data) => {
+  /* const onSubmit: SubmitHandler<FormData> = async (data) => {
     try {
       const response = await fetch('/api/users/create', {
         method: 'POST',
@@ -40,6 +40,29 @@ export default function Form() {
         throw new Error('Erro ao cadastrar usuário');
       }
 
+      const newUser = await response.json();
+      addUser(newUser);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+ */
+
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
+    try {
+      const response = await fetch('/api/users/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+  
+      if (!response.ok) {
+        const errorMessage = await response.text();
+        throw new Error(`Erro ao cadastrar usuário: ${errorMessage}`);
+      }
+  
       const newUser = await response.json();
       addUser(newUser);
     } catch (error) {

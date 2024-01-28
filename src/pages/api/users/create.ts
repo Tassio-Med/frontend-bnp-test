@@ -20,6 +20,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (req.method === 'POST') {
     try {
+      console.log('Recebendo dados do corpo:', req.body);
       const userData: IUserCreate & { [key: string]: any } = req.body;
 
       if (!userData?.name || !userData?.email) {
