@@ -1,38 +1,108 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Projeto Next.js com TypeScript
 
-## Getting Started
+Projeto desenvolvido em Next.js com TypeScript para o teste de Desenvolvedor Front-End na empresa BNP Soluções em T.I.
 
-First, run the development server:
+## Desafios
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+### 1. Modal Component
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Caminho:** `components/Modal/index.tsx`
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- Ao clicar no wrapper do modal, o modal deve ser fechado. Esta ação deve ser ignorada caso o usuário clique em qualquer elemento dentro do modal.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### 2. API para Leitura de Usuários
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+**Caminho:** `pages/api/users/read.ts`
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Crie uma API que retorne uma lista de usuários.
+- A request deve receber apenas o método GET.
+- A lista deve conter pelo menos 2 usuários.
+- Cada usuário deve ter um id, nome e email.
+- Utilize a interface IUser para tipar os dados.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+### 3. Ciclo de Vida
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Caminho:** `pages/ciclo-de-vida.tsx`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- No evento de montagem deste componente, devem ser registrados os seguintes event listeners:
+  - onCounterMount
+  - onCounterUnmount
+  - onCounterUpdate
+- Os eventos devem ser disparados no componente Counter, seguindo o ciclo de vida do mesmo.
+- Ao atualizar o contador, deverá ser passado o valor atualizado no evento onCounterUpdate. Quando o valor chegar a 10, o Counter deve ser desmontado.
 
-## Deploy on Vercel
+> (Opcional) Ao observar os eventos, você verá que eles são disparados mais de uma vez. Isso acontece porque o componente Counter é desmontado e montado novamente, e os eventos são registrados novamente. Isso é um problema comum no Next.js, você deve resolver este problema.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 4. Context API
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**Caminho:** `pages/context-api.tsx`
+
+- Criar um contexto para exibir mensagens de sucesso e erro.
+- Criar um componente para exibir as mensagens.
+- Criar um hook para disparar e consumir as mensagens.
+- Disparar as mensagens a partir dos botões abaixo.
+
+### 5. Formulário
+
+**Caminho:** `pages/formulario.tsx`
+
+- Primeiramente vá até `/src/pages/api/users/create.ts` e implemente a API.
+- Deve ser implementado utilizando a lib react-hook-form.
+- O formulário deve ter os seguintes campos: nome, e-mail.
+- Os dois campos são obrigatórios e precisam de validação.
+- Ao dar 'submit', deve ser feita uma request para `/api/users/create`.
+- Lide com os possíveis erros.
+
+
+
+### 6. Lista
+
+**Caminho:** `pages/lista.tsx`
+
+- Primeiramente vá até `/src/pages/api/users/index.ts` e implemente a API.
+- Obter a lista de usuários da API.
+- Renderizar a lista de usuários.
+
+
+
+### 7. Modal de Confirmação
+
+**Caminho:** `pages/modal-de-confirmacao.tsx`
+
+- Crie um componente para o modal de confirmação.
+- Utilize o código abaixo como base.
+- O modal deve ser aberto ao clicar no botão "Abrir modal de confirmação".
+- O título deve ser "Confirmação".
+- O conteúdo deve ser dinâmico.
+
+### 8. Modal
+
+**Caminho:** `pages/modal.tsx`
+
+- O modal fecha ao clicar em qualquer elemento, resolva o problema.
+
+### 9. Página Estática
+
+**Caminho:** `pages/pagina-estatica.tsx`
+
+- Atualmente, o conteúdo é gerado no momento em que a requisição é feita.
+- Transforme essa página em uma página estática.
+- A página deve ser gerada no momento da build.
+- A página deve ser atualizada a cada 1 minuto.
+
+## Checkpoints
+
+- [x] 1 - `components/modal.tsx` - Modal
+- [x] 2 - `pages/api/users/index.ts` - Read List
+- [x] 3 - `pages/ciclo-de-vida.tsx` - Ciclo de Vida
+- [x] 4 - `pages/context-api.tsx` - Context Api
+- [ ] 5 - `pages/formulario.tsx` - Formulário
+- [x] 6 - `pages/lista.tsx` - Lista
+- [x] 7 - `pages/modal-de-confirmacao.tsx` - Modal de confirmação
+- [x] 8 - `pages/modal.tsx` - Modal
+- [x] 9 - `pages/pagina-estatica.tsx` - Página estática
+
+## Link da Empresa
+
+[BNP Soluções em T.I](https://bnpsolucoes.com.br/)
