@@ -103,6 +103,6 @@ Projeto desenvolvido em Next.js com TypeScript para o teste de Desenvolvedor Fro
 - [x] 8 - `pages/modal.tsx` - Modal
 - [x] 9 - `pages/pagina-estatica.tsx` - Página estática
 
-## Link da Empresa
+## Site da Empresa
 
 [BNP Soluções em T.I](https://bnpsolucoes.com.br/)
