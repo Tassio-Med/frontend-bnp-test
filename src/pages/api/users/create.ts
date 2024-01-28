@@ -11,6 +11,23 @@
  */
 
 import { NextApiRequest, NextApiResponse } from 'next';
+<<<<<<< HEAD
+import { IUserCreate } from '@/types/user.d';
+import { useUser } from '@/pages/context/user-context';
+
+export default async (req: NextApiRequest, res: NextApiResponse) => {
+  const { addUser, users } = useUser();
+
+  if (req.method === 'POST') {
+    try {
+      const userData: IUserCreate & { [key: string]: any } = req.body;
+
+      if (!userData?.name || !userData?.email) {
+        return res.status(400).json({ error: 'Nome e email são obrigatórios' });
+      }
+
+      const newUser = {
+=======
 import { IUser, IUserCreate } from '@/types/user.d';
 
 let users: IUser[] = [
@@ -28,12 +45,17 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
       }
 
       const newUser: IUser = {
+>>>>>>> main
         id: users.length + 1,
         name: userData.name,
         email: userData.email,
       };
 
+<<<<<<< HEAD
+      addUser(newUser);
+=======
       users.push(newUser);
+>>>>>>> main
 
       return res.status(201).json(newUser);
     } catch (error) {
