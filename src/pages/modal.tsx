@@ -1,4 +1,4 @@
-/**
+/*
  * Modal
  *
  * - O modal fecha ao clicar em qualquer elemento, resolva o problema
